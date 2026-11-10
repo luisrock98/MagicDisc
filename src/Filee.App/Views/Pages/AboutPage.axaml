@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Filee.App.ViewModels.Pages"
+             xmlns:c="using:Filee.App.Controls"
+             x:Class="Filee.App.Views.Pages.AboutPage"
+             x:DataType="vm:AboutPageViewModel">
+  <StackPanel Spacing="18">
+    <TextBlock Classes="h1" Text="{DynamicResource about.title}" />
+    <Border Classes="card">
+      <Grid ColumnDefinitions="Auto,*" ColumnSpacing="18">
+        <Image Source="avares://MagicDisc/Assets/Icons/filee.png" Width="72" Height="72" VerticalAlignment="Top" />
+        <StackPanel Grid.Column="1" Spacing="10">
+          <StackPanel Orientation="Horizontal" Spacing="10">
+            <TextBlock Text="MagicDisc" FontSize="24" FontWeight="Bold" />
+            <Border Classes="badge" Padding="10,3" Background="{DynamicResource AccentSoftBrush}" VerticalAlignment="Center">
+              <TextBlock x:Name="VersionText" Text="{Binding VersionBadge}" FontSize="12" FontWeight="Bold" Foreground="{DynamicResource AccentBrush}" />
+            </Border>
+          </StackPanel>
+          <TextBlock Classes="muted" Text="{DynamicResource about.license}" TextWrapping="Wrap" />
+          <Button Classes="ghost" Padding="0" HorizontalAlignment="Left" Click="OnOpenRepository">
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <PathIcon Width="14" Height="14" Data="{StaticResource Icon.GitHub}" />
+              <TextBlock Text="{Binding RepositoryUrl}" />
+            </StackPanel>
+          </Button>
+        </StackPanel>
+      </Grid>
+    </Border>
+    <Expander Header="{DynamicResource about.notices}" HorizontalAlignment="Stretch">
+      <c:MarkdownView Markdown="{Binding Notices}" SkipTitle="False" FlowDirection="LeftToRight" Margin="0,12,0,0" />
+    </Expander>
+  </StackPanel>
+</UserControl>

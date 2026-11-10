@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Filee.App.ViewModels.Pages"
+             xmlns:pages="using:Filee.App.Views.Pages"
+             x:Class="Filee.App.Views.Pages.GeneralPage"
+             x:DataType="vm:GeneralPageViewModel">
+  <Grid RowDefinitions="Auto,*" RowSpacing="18">
+    <TextBlock Classes="h1" Text="{DynamicResource general.title}" />
+    <TabControl Grid.Row="1" SelectedIndex="{Binding SelectedSettingsTab}">
+      <TabItem Header="{DynamicResource general.basic}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="0,14,8,0">
+          <pages:GeneralOptionsView />
+        </ScrollViewer>
+      </TabItem>
+      <TabItem Header="{DynamicResource nav.triggers}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="0,14,8,0">
+          <pages:TriggersPage DataContext="{Binding TriggersSettings}" />
+        </ScrollViewer>
+      </TabItem>
+      <TabItem Header="{DynamicResource nav.presets}">
+        <pages:PresetsPage DataContext="{Binding PresetSettings}" Margin="0,14,0,0" />
+      </TabItem>
+      <TabItem Header="{DynamicResource nav.theme}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="0,14,8,0">
+          <pages:ThemePage DataContext="{Binding ThemeSettings}" />
+        </ScrollViewer>
+      </TabItem>
+      <TabItem Header="{DynamicResource nav.engines}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="0,14,8,0">
+          <pages:EnginesPage DataContext="{Binding EngineSettings}" />
+        </ScrollViewer>
+      </TabItem>
+    </TabControl>
+  </Grid>
+</UserControl>
